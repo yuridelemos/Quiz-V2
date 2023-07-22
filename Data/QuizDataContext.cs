@@ -15,7 +15,7 @@ namespace Quiz_V2.Data
         public DbSet<Answer> Answers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlServer("Server=localhost,1433;Database=QuizV2;User Id=sa;Password=Sh@rk250535;Trusted_Connection=False;TrusteServerCertificate=True");
+        => options.UseSqlServer("Server=localhost,1433;Database=QuizV2;User Id=sa;Password=Sh@rk250535;Trusted_Connection=False;TrustServerCertificate=True");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
