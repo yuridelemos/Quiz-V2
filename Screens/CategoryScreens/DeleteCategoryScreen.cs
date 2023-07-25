@@ -31,25 +31,29 @@ namespace Quiz_V2.Screens.CategoryScreens
         {
             using var context = new QuizDataContext();
             Console.Write("Escreva o ID: ");
-            if (int.TryParse(Console.ReadLine(), out var id))
+            try
             {
-                var category = context.Categories.FirstOrDefault(x => x.Id == id);
-
-                if (category != null)
+                if (int.TryParse(Console.ReadLine(), out var id))
                 {
-                    context.Categories.Remove(category);
-                    context.SaveChanges();
-                    Console.WriteLine("Categoria deletada com sucesso!");
+                    var category = context.Categories.FirstOrDefault(x => x.Id == id);
+
+                    if (category != null)
+                    {
+                        context.Categories.Remove(category);
+                        context.SaveChanges();
+                        Console.WriteLine("Categoria deletada com sucesso!");
+                    }
+                    else
+                        Console.WriteLine("Categoria não encontrada. Certifique-se de que o ID esteja correto.");
                 }
                 else
-                {
-                    Console.WriteLine("Categoria não encontrada. Certifique-se de que o ID esteja correto.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("ID inválido. Insira um número válido.");
+                    Console.WriteLine("ID inválido. Insira um número válido.");
+
                 Delete();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Infelizmente não foi possível atualizar a categoria. Erro " + e.Message);
             }
 
         }

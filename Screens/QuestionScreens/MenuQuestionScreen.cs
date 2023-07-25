@@ -2,7 +2,7 @@ namespace Quiz_V2.Screens.QuestionScreens
 {
     public class MenuQuestionScreen
     {
-        public static void Load()
+        internal static void Load()
         {
             Console.Clear();
             Console.WriteLine("Gestão de questões");
@@ -21,16 +21,16 @@ namespace Quiz_V2.Screens.QuestionScreens
             switch (option)
             {
                 case 1:
-                    // ListQuestionScreen.Load();
+                    ListQuestionScreen.Load();
                     break;
                 case 2:
-                    // CreateQuestionScreen.Load();
+                    CreateQuestionScreen.Load();
                     break;
                 case 3:
-                    // UpdateQuestionScreen.Load();
+                    UpdateQuestionScreen.Load();
                     break;
                 case 4:
-                    // DeleteQuestionScreen.Load();
+                    DeleteQuestionScreen.Load();
                     break;
                 case 0:
                     MainMenu.Start();

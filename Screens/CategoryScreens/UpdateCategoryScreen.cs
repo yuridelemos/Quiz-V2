@@ -31,29 +31,33 @@ namespace Quiz_V2.Screens.CategoryScreens
         {
             using var context = new QuizDataContext();
             Console.Write("Escreva o ID: ");
-            if (int.TryParse(Console.ReadLine(), out var id))
+            try
             {
-                Console.Write("Digite a nova matéria: ");
-                var categoryName = Console.ReadLine();
-
-                var category = context.Categories.FirstOrDefault(x => x.Id == id);
-
-                if (category != null)
+                if (int.TryParse(Console.ReadLine(), out var id))
                 {
-                    category.Name = categoryName;
-                    context.Categories.Update(category);
-                    context.SaveChanges();
-                    Console.WriteLine("Categoria atualizada com sucesso!");
+                    Console.Write("Digite a nova matéria: ");
+                    var categoryName = Console.ReadLine();
+
+                    var category = context.Categories.FirstOrDefault(x => x.Id == id);
+
+                    if (category != null)
+                    {
+                        category.Name = categoryName;
+                        context.Categories.Update(category);
+                        context.SaveChanges();
+                        Console.WriteLine("Categoria atualizada com sucesso!");
+                    }
+                    else
+                        Console.WriteLine("Categoria não encontrada. Certifique-se de que o ID esteja correto.");
                 }
                 else
-                {
-                    Console.WriteLine("Categoria não encontrada. Certifique-se de que o ID esteja correto.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("ID inválido. Insira um número válido.");
+                    Console.WriteLine("ID inválido. Insira um número válido.");
+
                 Update();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Infelizmente não foi possível atualizar a categoria. Erro " + e.Message);
             }
         }
     }
