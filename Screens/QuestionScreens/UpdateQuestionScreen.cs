@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Quiz_V2.Data;
 
 namespace Quiz_V2.Screens.QuestionScreens
@@ -10,9 +6,9 @@ namespace Quiz_V2.Screens.QuestionScreens
     {
         public static void Load()
         {
-            System.Console.WriteLine("-----ATUALIZAR QUESTÃO-----");
-            System.Console.WriteLine("(1) - Atualizar questão");
-            System.Console.WriteLine("(0) - Voltar");
+            Console.WriteLine("-----ATUALIZAR QUESTÃO-----");
+            Console.WriteLine("(1) - Atualizar questão");
+            Console.WriteLine("(0) - Voltar");
             if (int.TryParse(Console.ReadLine(), out var option))
             {
                 if (option == 0)

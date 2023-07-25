@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using Quiz_V2.Data;
 namespace Quiz_V2.Screens
 {
     public class StartGame
@@ -13,12 +15,43 @@ namespace Quiz_V2.Screens
                 numberOfQuestions = 20;
             else if (numberOfQuestions < 0)
                 numberOfQuestions = 10;
-            Random rand = new Random();
-            // int rightQuestions = 0, questionNumber = 1;
-            List<int> questionsAlreadyAsked = new List<int>();
+            Random random = new Random();
+            int rightQuestions = 0, questionNumber = 1, answerNumber = 1, rightAnswer = 0;
 
+            var context = new QuizDataContext();
+            var questions = context
+                .Questions
+                .Include(y => y.Answers)
+                .AsNoTracking()
+                .OrderBy(y => y.Id)
+                .ToList();
 
-            // System.Console.WriteLine($"Seu resultado foi de {rightQuestions} acertos!");
+            foreach (var question in questions.OrderBy(y => random.Next()))
+            {
+                Console.WriteLine($" {questionNumber} - {question.Body}");
+                foreach (var answer in question.Answers.OrderBy(y => random.Next()))
+                {
+                    Console.WriteLine($"({answerNumber}) - {answer.Body}");
+                    if (answer.IsCorrect == true)
+                        rightAnswer = answerNumber;
+                    answerNumber++;
+                }
+                Console.WriteLine("Qual a resposta correta?");
+                Console.Write("======================: ");
+                var chosenAnswer = short.Parse(Console.ReadLine());
+                if (chosenAnswer == rightAnswer)
+                {
+                    Console.WriteLine("Certa resposta!");
+                    rightQuestions++;
+                }
+                else
+                    Console.WriteLine("Resposta errada!");
+                questionNumber++;
+                answerNumber = 1;
+                if (questionNumber > numberOfQuestions)
+                    break;
+            }
+            System.Console.WriteLine($"Seu resultado foi de {rightQuestions} acertos!");
         }
     }
 }

@@ -1,4 +1,3 @@
-
 using Microsoft.EntityFrameworkCore;
 using Quiz_V2.Models;
 

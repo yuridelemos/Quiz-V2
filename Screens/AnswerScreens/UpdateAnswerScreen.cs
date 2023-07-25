@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Quiz_V2.Data;
 
 namespace Quiz_V2.Screens.AnswerScreens
@@ -10,9 +6,9 @@ namespace Quiz_V2.Screens.AnswerScreens
     {
         internal static void Load()
         {
-            System.Console.WriteLine("-----ATUALIZAR RESPOSTA-----");
-            System.Console.WriteLine("(1) - Atualizar resposta");
-            System.Console.WriteLine("(0) - Voltar");
+            Console.WriteLine("-----ATUALIZAR RESPOSTA-----");
+            Console.WriteLine("(1) - Atualizar resposta");
+            Console.WriteLine("(0) - Voltar");
             if (int.TryParse(Console.ReadLine(), out var option))
             {
                 if (option == 0)
@@ -28,6 +24,8 @@ namespace Quiz_V2.Screens.AnswerScreens
                 Console.WriteLine("Opção inválida. Insira um número válido.");
                 Load();
             }
+            Thread.Sleep(2000);
+            Console.Clear();
             MenuAnswerScreen.Load();
         }
 

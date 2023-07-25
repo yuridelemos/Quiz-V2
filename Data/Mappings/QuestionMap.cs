@@ -1,9 +1,6 @@
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Quiz_V2.Models;
-
-
 namespace Quiz_V2.Data.Mappings
 {
     public class QuestionMap : IEntityTypeConfiguration<Question>

@@ -25,6 +25,7 @@ namespace Quiz_V2.Screens.CategoryScreens
                 Console.WriteLine("Opção inválida. Insira um número válido.");
                 Load();
             }
+            MenuCategoryScreen.Load();
         }
 
         private static void Delete()
@@ -48,8 +49,6 @@ namespace Quiz_V2.Screens.CategoryScreens
                 }
                 else
                     Console.WriteLine("ID inválido. Insira um número válido.");
-
-                Delete();
             }
             catch (Exception e)
             {
