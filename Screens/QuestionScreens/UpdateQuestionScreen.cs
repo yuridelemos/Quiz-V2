@@ -31,7 +31,7 @@ namespace Quiz_V2.Screens.QuestionScreens
             MenuQuestionScreen.Load();
         }
 
-        public static void Update()
+        private static void Update()
         {
             using var context = new QuizDataContext();
             Console.Write("Escreva o ID: ");

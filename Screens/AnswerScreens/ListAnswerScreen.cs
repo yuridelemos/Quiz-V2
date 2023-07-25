@@ -1,33 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Quiz_V2.Data;
 
-namespace Quiz_V2.Screens.QuestionScreens
+namespace Quiz_V2.Screens.AnswerScreens
 {
-    internal class ListQuestionScreen
+    internal class ListAnswerScreen
     {
         internal static void Load()
         {
             Console.Clear();
-            Console.WriteLine("Gestão de questões");
+            Console.WriteLine("Gestão de respostas");
             Console.WriteLine("--------------");
             List();
             Console.WriteLine();
             System.Console.WriteLine("Pressione qualquer tecla para retornar ao menu.");
             Console.ReadKey();
-            MenuQuestionScreen.Load();
+            MenuAnswerScreen.Load();
         }
 
         internal static void List()
         {
             using var context = new QuizDataContext();
-            var questions = context
-                .Questions
+            var answers = context
+                .Answers
                 .AsNoTracking()
                 .OrderBy(x => x.Id)
                 .ToList();
 
-            foreach (var question in questions)
-                Console.WriteLine($"{question.Id} - {question.Body}");
+            foreach (var answer in answers)
+                Console.WriteLine($"{answer.Id} - {answer.Body}");
         }
     }
 }

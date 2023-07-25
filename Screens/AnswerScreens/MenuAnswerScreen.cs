@@ -18,10 +18,10 @@ namespace Quiz_V2.Screens.AnswerScreens
             switch (option)
             {
                 case 1:
-                    // UpdateAnswerScreen.Load();
+                    UpdateAnswerScreen.Load();
                     break;
                 case 2:
-                    // RuleAnswerScreen.Load();
+                    RuleAnswerScreen.Load();
                     break;
                 case 0:
                     MainMenu.Start();
